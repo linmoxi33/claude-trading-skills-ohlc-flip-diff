@@ -1,0 +1,25 @@
+ohlc-flip-diff 1.0.0  mode=scan  bars=60  symbol=SYN
+strict coverage: complete (5/5 evaluated; not_evaluated=0 reasons={})
+omissions tested: 152
+findings (scan): 152  (candidate_minted=53, masked_not_evaluable=99)
+  burst-20pct      candidate_minted       witness=close@0            zerofill_ok=True strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@1            zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@2            zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@3            zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@4            zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@5            zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@6            zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@7            zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@8            zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@9            zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@10           zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@11           zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@12           zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@13           zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@14           zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@15           zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@16           zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@17           zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@18           zerofill_ok=False strict=missing_data
+  burst-20pct      masked_not_evaluable   witness=close@19           zerofill_ok=False strict=missing_data
+  ... 132 more

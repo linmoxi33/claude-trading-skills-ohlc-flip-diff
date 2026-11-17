@@ -1,0 +1,2810 @@
+{
+  "tool": "ohlc-flip-diff",
+  "version": "1.0.0",
+  "mode": "scan",
+  "symbol": "SYN",
+  "bars": 60,
+  "rules": [
+    {
+      "name": "rsi14-oversold",
+      "window": 15,
+      "fields": [
+        "close"
+      ],
+      "note": "Wilder RSI(14) < 30 -> oversold candidate"
+    },
+    {
+      "name": "sma50-trend",
+      "window": 50,
+      "fields": [
+        "close"
+      ],
+      "note": "last close above its own SMA(50) -> trend candidate"
+    },
+    {
+      "name": "burst-20pct",
+      "window": 60,
+      "fields": [
+        "close"
+      ],
+      "note": "last close >= 1.2 x close 60 bars ago -> burst candidate"
+    },
+    {
+      "name": "volume-confirm",
+      "window": 21,
+      "fields": [
+        "volume"
+      ],
+      "note": "last volume > 1.5 x mean of the previous 20"
+    },
+    {
+      "name": "range-expansion",
+      "window": 2,
+      "fields": [
+        "high",
+        "low",
+        "close"
+      ],
+      "note": "(high-low) of the last bar > 5% of its close"
+    }
+  ],
+  "evaluation_coverage": {
+    "universe_size": 5,
+    "evaluated": 5,
+    "not_evaluated": 0,
+    "not_evaluated_reasons": {},
+    "verdict": "complete"
+  },
+  "summary": {
+    "omissions_tested": 152,
+    "declared": {
+      "verdict_flips": 53,
+      "masked_not_evaluable": 99
+    },
+    "witness": {}
+  },
+  "findings": [
+    {
+      "rule": "burst-20pct",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 0,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-01"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 1,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-02"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 2,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-03"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 3,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-04"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 4,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-05"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 5,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-06"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 6,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-07"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 7,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-08"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 8,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-09"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 9,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-10"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 10,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-11"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 11,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-12"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 12,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-13"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 13,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-14"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 14,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-15"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 15,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-16"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 16,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-17"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 17,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-18"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 18,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-19"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 19,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-20"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 20,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-21"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 21,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-22"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 22,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-23"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 23,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-24"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 24,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-25"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 25,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-26"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 26,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-27"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 27,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-28"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 28,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-01"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 29,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-02"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 30,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-03"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 31,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-04"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 32,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-05"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 33,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-06"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 34,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-07"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 35,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-08"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 36,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-09"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 37,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-10"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 38,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-11"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 39,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-12"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 40,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-13"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 41,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-14"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 42,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-15"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 43,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 44,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-17"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 45,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-18"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 46,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-19"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 47,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-20"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 48,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-21"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 49,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-22"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 50,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-23"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 51,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-24"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 52,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-25"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 53,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-26"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 54,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-27"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 55,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-28"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 56,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-01"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 57,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-02"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 58,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-03"
+    },
+    {
+      "rule": "burst-20pct",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 59,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-04"
+    },
+    {
+      "rule": "range-expansion",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 58,
+          "field": "high"
+        }
+      ],
+      "date": "2026-10-03"
+    },
+    {
+      "rule": "range-expansion",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 58,
+          "field": "low"
+        }
+      ],
+      "date": "2026-10-03"
+    },
+    {
+      "rule": "range-expansion",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 58,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-03"
+    },
+    {
+      "rule": "range-expansion",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 59,
+          "field": "high"
+        }
+      ],
+      "date": "2026-10-04"
+    },
+    {
+      "rule": "range-expansion",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 59,
+          "field": "low"
+        }
+      ],
+      "date": "2026-10-04"
+    },
+    {
+      "rule": "range-expansion",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 59,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-04"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 45,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-18"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 46,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-19"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 47,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-20"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 48,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-21"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 49,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-22"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 50,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-23"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 51,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-24"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 52,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-25"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 53,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-26"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 54,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-27"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 55,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-28"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 56,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-01"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 57,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-02"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 58,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-03"
+    },
+    {
+      "rule": "rsi14-oversold",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 59,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-04"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 10,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-11"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 11,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-12"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 12,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-13"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 13,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-14"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 14,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-15"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 15,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-16"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 16,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-17"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 17,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-18"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 18,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-19"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 19,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-20"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 20,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-21"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 21,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-22"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 22,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-23"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 23,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-24"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 24,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-25"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 25,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-26"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 26,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-27"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 27,
+          "field": "close"
+        }
+      ],
+      "date": "2026-09-28"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 28,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-01"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 29,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-02"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 30,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-03"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 31,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-04"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 32,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-05"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 33,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-06"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 34,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-07"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 35,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-08"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 36,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-09"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 37,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-10"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 38,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-11"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 39,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-12"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 40,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-13"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 41,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-14"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 42,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-15"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 43,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 44,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-17"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 45,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-18"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 46,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-19"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 47,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-20"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 48,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-21"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 49,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-22"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 50,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-23"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 51,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-24"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 52,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-25"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 53,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-26"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 54,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-27"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 55,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-28"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 56,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-01"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 57,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-02"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "candidate_minted",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": true
+      },
+      "minimal_witness": [
+        {
+          "index": 58,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-03"
+    },
+    {
+      "rule": "sma50-trend",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 59,
+          "field": "close"
+        }
+      ],
+      "date": "2026-10-04"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 39,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-12"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 40,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-13"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 41,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-14"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 42,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-15"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 43,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 44,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-17"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 45,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-18"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 46,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-19"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 47,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-20"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 48,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-21"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 49,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-22"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 50,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-23"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 51,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-24"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 52,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-25"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 53,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-26"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 54,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-27"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 55,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-28"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 56,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-01"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 57,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-02"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 58,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-03"
+    },
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 59,
+          "field": "volume"
+        }
+      ],
+      "date": "2026-10-04"
+    }
+  ],
+  "limitations": [
+    "Verdicts come from five built-in rules, not from the upstream skills' own code; the differential shows the shape of the failure, not a claim about one specific skill.",
+    "absClose is not modelled (upstream uses adjClose in places); a missing adjClose is therefore invisible here.",
+    "Only omitted fields are injected. Provider-side renames, 402/403 plan gating and stale-but-present values are out of scope.",
+    "Rules stop at 'candidate' / 'no candidate'; sizing, stops and ordering downstream of the rule are not simulated."
+  ]
+}

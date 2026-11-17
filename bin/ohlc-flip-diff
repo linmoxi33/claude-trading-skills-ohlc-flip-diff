@@ -1,0 +1,226 @@
+#!/usr/bin/env python3
+"""CLI: differential between strict missing-data handling and the zero default."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from flipdiff import core  # noqa: E402
+
+VERSION = "1.0.0"
+EXIT_OK = 0
+EXIT_FINDINGS = 1
+EXIT_USAGE = 2
+
+LIMITATIONS = [
+    "Verdicts come from five built-in rules, not from the upstream skills' "
+    "own code; the differential shows the shape of the failure, not a claim "
+    "about one specific skill.",
+    "absClose is not modelled (upstream uses adjClose in places); a missing "
+    "adjClose is therefore invisible here.",
+    "Only omitted fields are injected. Provider-side renames, 402/403 plan "
+    "gating and stale-but-present values are out of scope.",
+    "Rules stop at 'candidate' / 'no candidate'; sizing, stops and ordering "
+    "downstream of the rule are not simulated.",
+]
+
+
+def build_report(payload, bars, gaps, mode):
+    symbol = payload.get("symbol")
+    if mode == "gaps":
+        declared = core.compare(bars, gaps)
+        witness, flips = core.ddmin(bars, gaps)
+        # Findings are recomputed on the 1-minimal witness so that every
+        # witness printed below really reproduces the finding it is attached
+        # to; the declared-set totals stay visible as a separate count.
+        findings = core.compare(bars, witness) if flips else declared
+        stats = {
+            "gaps_declared": len(gaps),
+            "gaps_in_minimal_witness": len(witness) if flips else 0,
+            "declared": {
+                "verdict_flips": sum(
+                    1 for f in declared if f["class"] == "candidate_minted"
+                ),
+                "masked_not_evaluable": sum(
+                    1 for f in declared
+                    if f["class"] == "masked_not_evaluable"
+                ),
+            },
+            "witness": {
+                "verdict_flips": sum(
+                    1 for f in findings if f["class"] == "candidate_minted"
+                ),
+                "masked_not_evaluable": sum(
+                    1 for f in findings
+                    if f["class"] == "masked_not_evaluable"
+                ),
+            },
+        }
+    else:
+        result = core.scan(bars, symbol)
+        findings = result["findings"]
+        stats = {
+            "omissions_tested": result["tested"],
+            "declared": {
+                "verdict_flips": sum(
+                    1 for f in findings if f["class"] == "candidate_minted"
+                ),
+                "masked_not_evaluable": sum(
+                    1 for f in findings
+                    if f["class"] == "masked_not_evaluable"
+                ),
+            },
+            "witness": {},
+        }
+    return {
+        "tool": "ohlc-flip-diff",
+        "version": VERSION,
+        "mode": mode,
+        "symbol": symbol,
+        "bars": len(bars),
+        "rules": [
+            {"name": name, "window": core.RULES[name]["window"],
+             "fields": list(core.RULES[name]["fields"]),
+             "note": core.RULE_NOTES[name]}
+            for name in core.RULES
+        ],
+        "evaluation_coverage": core.coverage(bars, gaps, list(core.RULES)),
+        "summary": stats,
+        "findings": findings,
+        "limitations": LIMITATIONS,
+    }
+
+
+def render(report):
+    lines = []
+    lines.append(
+        "ohlc-flip-diff %s  mode=%s  bars=%d  symbol=%s"
+        % (report["version"], report["mode"], report["bars"], report["symbol"])
+    )
+    cov = report["evaluation_coverage"]
+    lines.append(
+        "strict coverage: %s (%d/%d evaluated; not_evaluated=%d reasons=%s)"
+        % (
+            cov["verdict"],
+            cov["evaluated"],
+            cov["universe_size"],
+            cov["not_evaluated"],
+            cov["not_evaluated_reasons"] or "{}",
+        )
+    )
+    if report["mode"] == "scan":
+        lines.append("omissions tested: %d" % report["summary"]["omissions_tested"])
+        counts = report["summary"]["declared"]
+    else:
+        lines.append(
+            "gaps declared: %d -> 1-minimal witness: %d"
+            % (
+                report["summary"]["gaps_declared"],
+                report["summary"]["gaps_in_minimal_witness"],
+            )
+        )
+        lines.append(
+            "declared-set findings: candidate_minted=%d masked_not_evaluable=%d"
+            % (
+                report["summary"]["declared"]["verdict_flips"],
+                report["summary"]["declared"]["masked_not_evaluable"],
+            )
+        )
+        counts = report["summary"]["witness"]
+    lines.append(
+        "findings (%s): %d  (candidate_minted=%d, masked_not_evaluable=%d)"
+        % (
+            "scan" if report["mode"] == "scan" else "witness",
+            len(report["findings"]),
+            counts["verdict_flips"],
+            counts["masked_not_evaluable"],
+        )
+    )
+    for finding in report["findings"][:20]:
+        witness = ",".join(
+            "%s@%s" % (g["field"], g["index"]) for g in finding["minimal_witness"]
+        ) or "-"
+        lines.append(
+            "  %-16s %-22s witness=%-18s zerofill_ok=%s strict=%s"
+            % (
+                finding["rule"],
+                finding["class"],
+                witness,
+                finding["zerofill"]["ok"],
+                finding["strict"]["reason"],
+            )
+        )
+    if len(report["findings"]) > 20:
+        lines.append("  ... %d more" % (len(report["findings"]) - 20))
+    return "\n".join(lines)
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        prog="ohlc-flip-diff",
+        description=(
+            "Compare strict missing-data handling with the upstream "
+            "bar.get(field, 0) default on one OHLC series."
+        ),
+    )
+    parser.add_argument("input", help="JSON file with bars[] and optional gaps[]")
+    parser.add_argument(
+        "--mode",
+        choices=("auto", "scan", "gaps"),
+        default="auto",
+        help="scan injects one omission at a time; gaps uses the declared set",
+    )
+    parser.add_argument("--json", action="store_true", help="emit JSON on stdout")
+    parser.add_argument(
+        "--strict-exit",
+        action="store_true",
+        help="exit 1 only for candidate_minted findings",
+    )
+    parser.add_argument("--version", action="version", version=VERSION)
+    args = parser.parse_args(argv)
+
+    try:
+        payload, bars, gaps = core.load(args.input)
+    except core.InputError as exc:
+        print("error: %s" % exc, file=sys.stderr)
+        return EXIT_USAGE
+
+    mode = args.mode
+    if mode == "auto":
+        mode = "gaps" if gaps else "scan"
+    if mode == "gaps" and not gaps:
+        print("error: --mode gaps needs a non-empty 'gaps' array", file=sys.stderr)
+        return EXIT_USAGE
+    if mode == "scan" and gaps:
+        print(
+            "error: --mode scan needs a complete series (drop 'gaps')",
+            file=sys.stderr,
+        )
+        return EXIT_USAGE
+
+    report = build_report(payload, bars, gaps, mode)
+    if args.json:
+        json.dump(report, sys.stdout, indent=2, sort_keys=False)
+        sys.stdout.write("\n")
+    else:
+        print(render(report))
+
+    counts = (
+        report["summary"]["declared"]
+        if report["mode"] == "scan"
+        else report["summary"]["witness"]
+    )
+    if counts["verdict_flips"]:
+        return EXIT_FINDINGS
+    if counts["masked_not_evaluable"] and not args.strict_exit:
+        return EXIT_FINDINGS
+    return EXIT_OK
+
+
+if __name__ == "__main__":
+    sys.exit(main())

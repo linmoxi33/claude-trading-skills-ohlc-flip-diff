@@ -1,0 +1,97 @@
+{
+  "tool": "ohlc-flip-diff",
+  "version": "1.0.0",
+  "mode": "gaps",
+  "symbol": "SYN",
+  "bars": 60,
+  "rules": [
+    {
+      "name": "rsi14-oversold",
+      "window": 15,
+      "fields": [
+        "close"
+      ],
+      "note": "Wilder RSI(14) < 30 -> oversold candidate"
+    },
+    {
+      "name": "sma50-trend",
+      "window": 50,
+      "fields": [
+        "close"
+      ],
+      "note": "last close above its own SMA(50) -> trend candidate"
+    },
+    {
+      "name": "burst-20pct",
+      "window": 60,
+      "fields": [
+        "close"
+      ],
+      "note": "last close >= 1.2 x close 60 bars ago -> burst candidate"
+    },
+    {
+      "name": "volume-confirm",
+      "window": 21,
+      "fields": [
+        "volume"
+      ],
+      "note": "last volume > 1.5 x mean of the previous 20"
+    },
+    {
+      "name": "range-expansion",
+      "window": 2,
+      "fields": [
+        "high",
+        "low",
+        "close"
+      ],
+      "note": "(high-low) of the last bar > 5% of its close"
+    }
+  ],
+  "evaluation_coverage": {
+    "universe_size": 5,
+    "evaluated": 4,
+    "not_evaluated": 1,
+    "not_evaluated_reasons": {
+      "missing_data": 1
+    },
+    "verdict": "partial"
+  },
+  "summary": {
+    "gaps_declared": 1,
+    "gaps_in_minimal_witness": 0,
+    "declared": {
+      "verdict_flips": 0,
+      "masked_not_evaluable": 1
+    },
+    "witness": {
+      "verdict_flips": 0,
+      "masked_not_evaluable": 1
+    }
+  },
+  "findings": [
+    {
+      "rule": "volume-confirm",
+      "class": "masked_not_evaluable",
+      "strict": {
+        "ok": null,
+        "reason": "missing_data"
+      },
+      "zerofill": {
+        "ok": false
+      },
+      "minimal_witness": [
+        {
+          "index": 59,
+          "field": "volume"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Verdicts come from five built-in rules, not from the upstream skills' own code; the differential shows the shape of the failure, not a claim about one specific skill.",
+    "absClose is not modelled (upstream uses adjClose in places); a missing adjClose is therefore invisible here.",
+    "Only omitted fields are injected. Provider-side renames, 402/403 plan gating and stale-but-present values are out of scope.",
+    "Rules stop at 'candidate' / 'no candidate'; sizing, stops and ordering downstream of the rule are not simulated."
+  ]
+}
