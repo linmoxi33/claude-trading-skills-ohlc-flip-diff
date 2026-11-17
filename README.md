@@ -1,3 +1,10 @@
+> ⚠️ **本仓库未通过去重闸门，不计入交付（`runs.jsonl` status=`empty`），保留仅供审计。**
+> 上游 `tradermonty/claude-trading-skills` 已被本账号使用两次：
+> `claude-trading-skills-failure-map`（2026-11-14，正是 issue #711 的「失败 vs 真空结果不可区分」类）与
+> `claude-trading-skills-indicator-parity`（2026-11-16，7 份上游 RSI/EMA 副本的漂移见证）。
+> 本工具与前者在 #711 覆盖度那一半功能重合，且上游本身已列入 `state/used-upstreams.txt`（2026-11-15 之前）。
+> 请勿把它当作新项目；下一轮应换未用过的上游。
+
 # ohlc-flip-diff
 
 Tell whether a single missing OHLC field **flips a screener verdict** before it
